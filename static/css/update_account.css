@@ -1,0 +1,23 @@
+
+
+#update-account-header{
+    padding: 10px;
+    text-align: center;
+}
+#update-account-header h2{
+    padding: 10px;
+}
+
+#update-my-account{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#update-my-account form{
+    border: 2px solid black;
+    padding: 20px 10px;
+    margin: 20px;
+    border-radius: 20px;
+    width: 400px;
+}

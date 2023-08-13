@@ -1,0 +1,50 @@
+extends ../template.pug
+
+block stylesheet
+    style
+        include ../css/update_location.css
+
+block JavaScript
+    script(src="/static/js/update_location.js")
+
+block header
+
+block contents
+    div(class= 'container-fluide' id='update-location-header')
+        h2() Update Location
+        
+    div(id="update-my-location")
+        form(action=`/update/update-location/${profile.user_id}` method="post" enctype="multipart/form-data")
+            //- div(id="change-location")
+            <div class="form-group">
+                <label for=""> Country : </label>
+                input(type="text" name="country" value=`${profile.country}` class="form-control" id="")
+            </div>
+            <div class="form-group">
+                <label for=""> State : </label>
+                input(type="text" name="state" value=`${profile.state}` class="form-control" id="")
+            </div>
+            <div class="form-group">
+                <label for=""> District : </label>
+                input(type="text" name="district" value=`${profile.district}` class="form-control" id="")
+            </div>
+            <div class="form-group">
+                <label for=""> Town : </label>
+                input(type="text" name="town" value=`${profile.town}` class="form-control" id="")
+            </div>
+            <div class="form-group">
+                <label for=""> House No. : </label>
+                input(type="text" name="house_no" value=`${profile.house_no}` class="form-control" id="")
+            </div>
+            <div class="form-group">
+                <label for=""> Pin : </label>
+                input(type="number" name="pin" value=`${profile.pin}` class="form-control" id="")
+            </div>
+            <div class="form-group">
+                <label for=""> Password : </label>
+                input(type="password" name="password" class="form-control" id="" required)
+            </div>
+            //- <button type="button" class="btn btn-primary" onclick="show_confirm_location()">Change</button>
+            //- div(class="confirm-location-change")
+            //- h3 Enter Password to confirm changes...
+            <button type="submit" class="btn btn-primary">Submit</button>

@@ -1,0 +1,83 @@
+extends ../template.pug 
+
+block stylesheet 
+    style 
+        include ../css/about.css 
+
+block JavaScript 
+    script(src="/static/js/about.js") 
+
+block header 
+
+
+block contents 
+    h1 Abhayjeet
+    
+    <div class="container" id="about-btn">
+        <button type="button" class="btn btn-success" id="developer-btn" onclick="display_developer()">About Developer</button>
+        <button type="button" class="btn btn-success" id="website-btn" onclick="display_website()">About Web-site</button>
+    </div>
+
+    <div class="container" id="about-developer">
+        <div class="container-fluid" id="part-1">
+            <img src="/images/profile.png" alt="" style="width: 220px;">
+            <h3>Abhayjeet</h3>
+            <p class="about">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus ipsum, delectus quis corrupti tempore impedit excepturi rem labore voluptates repellendus totam vitae explicabo id, eos cumque fugiat dolor ad laboriosam nisi ipsa? Quam laudantium ad quisquam iure aut animi quia?
+            </p>
+        </div>
+
+        <div class="row" id="part-3">
+            <div class="col">
+                <img src="/images/profile.png" alt="" style="width: 40px;">
+                <h4>Education</h4>
+                <a href="">More</a>
+            </div>
+            <div class="col">
+                <img src="/images/profile.png" alt="" style="width: 40px;">
+                <h4>Skill</h4>
+                <a href="">More</a>
+            </div>
+            <div class="col">
+                <img src="/images/profile.png" alt="" style="width: 40px;">
+                <h4>Expreience</h4>
+                <a href="">More</a>
+            </div>
+            <div class="col">
+                <img src="/images/profile.png" alt="" style="width: 40px;">
+                <h4>Other</h4>
+                <a href="">More</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container " id="about-website">
+        <div class="container-fluid" id="part-1">
+            <img src="/images/profile.png" alt="" style="width: 220px;">
+            <h3>Abhay Website</h3>
+            <p class="about">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus accusantium delectus, quibusdam iste amet dolorem libero commodi, ratione explicabo ullam odit placeat consequatur enim nisi pariatur fuga. Distinctio id temporibus omnis hic, deserunt perspiciatis. Sunt quas dicta praesentium ullam, eum quidem corrupti magni quos facere.
+            </p>
+        </div>
+        <div class="row" id="part-3">
+            <div class="col">
+                <img src="/images/profile.png" alt="" style="width: 40px;">
+                <h4>Technology Used</h4>
+                <a href="">More</a>
+            </div>
+            <div class="col">
+                <img src="/images/profile.png" alt="" style="width: 40px;">
+                <h4>Duration</h4>
+                <a href="">More</a>
+            </div>
+            <div class="col">
+                <img src="/images/profile.png" alt="" style="width: 40px;">
+                <h4>Developers</h4>
+                <a href="">More</a>
+            </div>
+            <div class="col">
+                <img src="/images/profile.png" alt="" style="width: 40px;">
+                <h4>Other</h4>
+                <a href="">More</a>
+            </div>
+        </div>
+    </div>
+

@@ -1,0 +1,39 @@
+extends ../template.pug 
+
+block stylesheet 
+    style 
+        include ../css/login.css 
+
+block JavaScript 
+
+block header 
+
+
+block contents 
+
+    div(class="alert alert-success" id="login-message")= message
+
+    div(class="container")
+        <form action="/login" method="post">
+            <div class="form-group">
+                <label for="Role">Role</label>
+                <select id="role" name="Role">
+                    <option value="User">User</option>
+                    <option value="Admin">Admin</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="email">Email address:</label>
+                <input type="email" name="Email" class="form-control" placeholder="Enter email" id="email">
+            </div>
+            <div class="form-group">
+                <label for="pwd">Password:</label>
+                <input type="password" name="Password" class="form-control" placeholder="Enter password" id="pwd">
+            </div>
+            <button type="submit" class="btn btn-primary"> Submit
+            </button>
+        </form>
+        div(class="container" id="signup")
+            h5 If you don't have an account 
+            a(href="/signup")
+                h5 Create new Account

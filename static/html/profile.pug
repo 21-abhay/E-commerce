@@ -1,0 +1,257 @@
+extends ../template.pug 
+
+block stylesheet 
+    style 
+        include ../css/profile.css 
+
+block JavaScript 
+    script(src="/static/js/profile.js") 
+
+block header 
+
+block contents
+
+    p(id="role") #{profile.role}
+    div(class="container-fluide" style="text-align:center;")
+        h3= message
+    
+    div(class="container-fluide" id="user")
+        div(class="container-fluide" style="border : 1px solid black; padding :10px;")
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    //- <a class="nav-link" href="#">Link</a>
+                    <button type="button" class="btn btn-success" id="profile-button" onclick="show_profile()">Profile</button>
+                </li>
+            </ul>
+
+    div(class="container-fluide" id="admin")
+        div(class="container-fluide" style="border : 1px solid black; padding :10px;")
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    //- <a class="nav-link" href="#">Link</a>
+                    <button type="button" class="btn btn-success" id="profile-button" onclick="show_profile()">Profile</button>
+                </li>
+                <li class="nav-item">
+                    //- <a class="nav-link" href="#">Link</a>
+                    <button type="button" class="btn btn-success" id="insert-items-btn" onclick="show_insert()">Insert</button>
+                </li>
+                <li class="nav-item">
+                    //- <a class="nav-link" href="#">Link</a>
+                    <button type="button" class="btn btn-success" id="view-items-btn" onclick="show_view()">View items</button>
+                </li>
+            </ul>
+        
+        div(class="container-fluide" id="show-items-container")
+            <div class="alert alert-success" id="insert-message" style="display:none;">
+                <strong>Success!</strong> inserted Succesfully..
+            </div>
+
+            table 
+                tr 
+                    th Id 
+                    th Name 
+                    th Category 
+                    th Price 
+                    th Quantity
+                    th Views 
+                    th Sell 
+                for item in items
+                    tr 
+                        td #{item.book_id}
+                        td #{item.book_name}
+                        td #{item.category}
+                        td #{item.price}
+                        td #{item.quantity}
+                        td #{item.views}
+                        td #{item.sell}
+
+        div(class="container-fluide" id="insert-items-container")
+            <form action="/insert/items" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="Name">Item Name:</label>
+                    <input type="text" class="form-control" placeholder="Enter Item Name" name="Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="Category">Category</label>
+                    <select id="category" name="category-list">
+                        <option value="none" id="category-none">None</option>
+                        <option value="Skill Enhancement">Skill Enhancement</option>
+                        <option value="Social Science">Social Science</option>
+                        <option value="Science">Science</option>
+                        <option value="Maths">Maths</option>
+                    </select><br>
+                    input(type="text", name="Category", placeholder="Enter Category" id="category-input" required)
+                </div>
+                <div class="form-group">
+                    <label for="Author">Author :</label>
+                    <input type="text" class="form-control" placeholder="Enter Author" name="Author">
+                </div>
+                <div class="form-group">
+                    <label for="Author">Publisher :</label>
+                    <input type="text" class="form-control" placeholder="Enter Publisher" name="Publisher">
+                </div>
+                <div class="form-group">
+                    <label for="Price">Price :</label>
+                    <input type="number" class="form-control" placeholder="Enter Price" name="Price" required>
+                </div>
+                <div class="form-group">
+                    <label for="Quantitu">Quantity :</label>
+                    <input type="number" class="form-control" placeholder="Enter Quantity" name="Quantity" required>
+                </div>
+                <div class="form-group">
+                    <label for="image">Image :</label>
+                    <input type="file" class="form-control" placeholder="Enter image" name="image" required>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" onclick="insert_message()">ADD</button>
+            </form>
+
+    div(class="container-fluid" id="profile-container")
+
+        div(class="row")
+            div(class="col-sm-4 profile-column" id="profile-column")
+
+                div(id="account-header")
+                    h3 My Acoount
+                    button(id="account-dropdown" onclick="show_profile_btn_container()") option
+
+                div(id="profile-btn-container")
+                    div(class="btn-conatiner")
+                        button(id="my-details-btn" class="" onclick="show_my_details()") My Details
+                    div(class="btn-conatiner")
+                        button(id="my-location-btn" class="" onclick="show_my_location()") My Location
+                    div(class="btn-conatiner")
+                        button(id="my-order-btn" class="" onclick="show_my_order()") My Orders
+                    div(class="btn-conatiner")
+                        button(id="my-accounts-btn" class="" onclick="show_my_accounts()") My Accounts
+
+            div(class="col-sm-8 profile-column")
+
+                div(id="my-details-container")
+                    img(src=`/static/upload/user/${profile.image}`, alt="")
+
+                    div(class="details")
+                        div(class="row")
+                            div(class="col-sm-4")
+                                p Name 
+                            div(class="col-sm-8")
+                                p #{profile.first_name} #{profile.last_name}
+
+                        div(class="row")
+                            div(class="col-sm-4")
+                                p DOB 
+                            div(class="col-sm-8")
+                                p #{profile.dob}
+                        div(class="row")
+                            div(class="col-sm-4")
+                                p Location 
+                            div(class="col-sm-8")
+                                p #{profile.Location}
+                        div(class="row")
+                            div(class="col-sm-4")
+                                p Email
+                            div(class="col-sm-8")
+                                p #{profile.email}
+                        div(class="row")
+                            div(class="col-sm-4")
+                                p Mobile No. 
+                            div(class="col-sm-8")
+                                p #{profile.mobile}
+                    
+                    a(href=`/update/update-details/${profile.user_id}`) 
+                        button(class="btn btn-success") UPDATE
+
+                div(id="my-location-container")
+                    p My Location Description
+                    div(class="details")
+                        div(class="row")
+                            div(class="col-sm-4")
+                                p Country  
+                            div(class="col-sm-8")
+                                p #{profile.country}
+
+                        div(class="row")
+                            div(class="col-sm-4")
+                                p States 
+                            div(class="col-sm-8")
+                                p #{profile.state}
+                        div(class="row")
+                            div(class="col-sm-4")
+                                p District
+                            div(class="col-sm-8")
+                                p #{profile.district}
+                        div(class="row")
+                            div(class="col-sm-4")
+                                p Town
+                            div(class="col-sm-8")
+                                p #{profile.town}
+                        div(class="row")
+                            div(class="col-sm-4")
+                                p House No. 
+                            div(class="col-sm-8")
+                                p #{profile.house_no}
+                        div(class="row")
+                            div(class="col-sm-4")
+                                p Pin 
+                            div(class="col-sm-8")
+                                p #{profile.pin_no}
+                    
+                    a(href=`/update/update-location/${profile.user_id}`) 
+                        button(class="btn btn-success") UPDATE
+                
+                div(id="my-order-container")
+                    p My Order Description
+
+                    if(orders.length)
+                        div(class= "table")
+                            div(class="table-head")
+                                
+
+                        table 
+                            tr 
+                                th Order Id 
+                                th Order Date  
+                                th Name
+                                th Price 
+                                th Quantity
+                                th Reciept
+                            for order in orders
+                                tr 
+                                    td #{order.order_id}
+                                    td #{order.order_date}
+                                    td #{order.book_name}
+                                    td #{order.price}
+                                    td #{order.quantity}
+                                    td 
+                                        a(href=`/view/order/${order.order_id}`) view
+                    
+                    else
+                        h3 Oh! Sad... You are still one step away from Excellent Port-Folio
+                        a(href=`/products`) Order items
+                    
+
+                div(id="my-accounts-container")
+                    p My Accounts Description
+                    div(class="details")
+                        div(class="row")
+                            div(class="col-sm-4")
+                                p Email
+                            div(class="col-sm-8")
+                                p #{profile.email}
+                        div(class="row")
+                            div(class="col-sm-4")
+                                p Mobile No. 
+                            div(class="col-sm-8")
+                                p #{profile.mobile}
+                        div(class="row")
+                            div(class="col-sm-4")
+                                p Password
+                            div(class="col-sm-8")
+                                p #{profile.password}
+
+                        a(href=`/update/update-account/${profile.user_id}`) 
+                            button(class="btn btn-success") UPDATE
+                    
+                
+
+

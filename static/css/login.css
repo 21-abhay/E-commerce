@@ -1,0 +1,55 @@
+
+
+#login-message{
+    width: fit-content;
+    padding: 5px;
+    margin: 10px auto;
+    padding: 5px 20px;
+}
+
+.container{
+    /* background-color: rgb(10, 10, 10); */
+    /* background-color: ; */
+    background-image: radial-gradient(black,blue,black);
+    padding: 20px 5px !important;
+    /* padding-top: 40px !important; */
+}
+
+form{
+    width: fit-content;
+    margin: 20px auto;
+    
+    font-size: large;
+    font-weight: bold;
+    width: fit-content;
+    margin: 20px auto;
+    border: 2px solid black;
+    padding: 10px ;
+    min-width: 300px;
+    border-radius: 10px;
+    box-shadow: 15px 10px rgb(37, 28, 121);
+    background-image: radial-gradient(rgb(134, 131, 131), rgb(50, 50, 236), rgb(116, 112, 112));
+}
+
+#signup{
+    color: black;
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+    width: fit-content;
+    margin: 20px auto;
+    border: 2px solid black;
+    padding: 10px ;
+    min-width: 300px;
+    border-radius: 10px;
+    box-shadow: 15px 10px rgb(37, 28, 121);
+    background-image: radial-gradient(rgb(134, 131, 131), rgb(50, 50, 236), rgb(116, 112, 112));
+}
+#signup a h5{
+    color: black;
+    border: 2px solid rgb(0, 193, 252);
+    border-radius: 5px;
+    width: fit-content;
+    padding: 5px;
+    margin: 5px auto;
+}

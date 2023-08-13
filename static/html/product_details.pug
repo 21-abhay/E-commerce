@@ -1,0 +1,38 @@
+extends ../template.pug 
+
+block stylesheet 
+    style 
+        include ../css/product_details.css 
+
+
+block header 
+
+
+block contents
+    div(class="container-fluide" id="product-container")
+        div(class="row" style="margin:10px auto")
+            div(class="col-sm-6")
+                img(src=`/static/upload/product/${product.image}`, alt=`${product.Name}`)
+
+            div(class="col-sm-6" class="details-container")
+                a(href=`/order/${product.book_id}`) 
+                    button(type="button" class="btn btn-success" id="place-order") Place Order
+                
+                div(class="details")
+                    h2 Id : #{product.book_id}
+                    h2 Name   : #{product.book_name}
+                    h4 Price  : &#8377; #{product.price} 
+                    h4 Rating : #{product.rating} 
+                    h4 Author : #{product.author} 
+                    h4 Category : #{product.category}
+                    h4 Quantity Avalaible : #{product.quantity}
+                    //- h4 #{product.Upload_by} 
+                    
+                a(href=`/order/${product.book_id}`) 
+                    button(type="button" class="btn btn-success" id="place-order") Place Order
+
+
+
+
+block JavaScript
+    script(src="/static/js/product_details.js")        

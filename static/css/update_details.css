@@ -1,0 +1,23 @@
+
+
+#update-details-header{
+    padding: 10px;
+    text-align: center;
+}
+#update-details-header h2{
+    padding: 10px;
+}
+
+#update-my-details{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#update-my-details form{
+    border: 2px solid black;
+    padding: 20px 10px;
+    margin: 20px;
+    border-radius: 20px;
+    width: 400px;
+}

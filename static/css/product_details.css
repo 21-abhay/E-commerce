@@ -1,0 +1,30 @@
+
+
+#product-container{
+    /* margin: 10px auto; */
+    padding: 10px ;
+}
+
+#product-container .col-sm-6{
+    border: 2px solid black;
+    padding: 10px;
+}
+
+#product-container .col-sm-6 img{
+    height: 100%;
+    object-fit: scale-down;
+    margin: 5px auto;
+}
+
+.details-container{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: end;
+}
+.details{
+    width: 100%;
+    margin: 20px auto;
+    border: 2px solid black;
+    padding: 10px;
+}

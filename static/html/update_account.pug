@@ -1,0 +1,38 @@
+extends ../template.pug
+
+block stylesheet
+    style
+        include ../css/update_account.css
+
+block JavaScript
+    script(src="/static/js/update_account.js")   
+
+block header
+
+block contents
+    div(class= 'container-fluide' id='update-account-header')
+        h2() Update Account
+        
+    div(id="update-my-account")
+        form(action=`/update/update-account/${profile.user_id}` method="post" enctype="multipart/form-data")
+            //- div(id="change-account")
+            <div class="form-group">
+                <label for=""> Email : </label>
+                input(type="email" name="email" value= `${profile.email}` class="form-control" id="")
+            </div>
+            <div class="form-group">
+                <label for=""> Mobile : </label>
+                input(type="number" name="mobile" value= `${profile.mobile}` class="form-control" id="")
+            </div>
+            <div class="form-group">
+                <label for=""> Password : </label>
+                input(type="password" name="password" placeholder="Enter Password" class="form-control" id="")
+            </div>
+            <div class="form-group">
+                <label for="">Confirm Password : </label>
+                input(type="password" name="confirm_password" placeholder="Confirm Password" class="form-control" id="")
+            </div>
+            //- <button type="button" class="btn btn-primary" onclick="show_confirm_account()">Change</button>9-
+            //- div(class="confirm-account-change")
+            h3 Enter Password to confirm changes...
+            <button type="submit" class="btn btn-primary">Submit</button>

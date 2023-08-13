@@ -1,0 +1,105 @@
+extends ../template.pug 
+
+block stylesheet 
+    style 
+        include ../css/signup.css 
+
+block JavaScript 
+    script(src="/static/js/signup.js") 
+
+block header 
+
+
+block contents 
+
+    div(class="alert alert-success" id="signup-message")= message
+
+    div(class="container")
+        <form action="/signup" method="post" enctype="multipart/form-data">
+            div(class="sign-up-sub-div")
+                <div class="form-group">
+                    <label for="Role">Role</label>
+                    <select id="role" name="Role" required>
+                        <option value="User">User</option>
+                        <option value="Admin">Admin</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="">Profile Picture : </label>
+                    <input type="file" name="image" class="form-control" id="" required>
+                </div>
+                <div class="form-group">
+                    <label for="">First Name</label>
+                    <input type="text" name="FirstName" class="form-control" id="" required>
+                </div>
+                <div class="form-group">
+                    <label for="">Last Name</label>
+                    <input type="text" name="LastName" class="form-control" id="" required>
+                </div>
+                div(class="next-back-btn-container")
+                    //- button(class="back-signup-btn" onclick="show_back()" class="btn btn-primary") Back
+                    button(class="next-signup-btn" onclick="show_next()" class="btn btn-primary") Next
+            //- <div class="form-group">
+            //-     <label for="">User Id</label>
+            //-     <input type="text" name="Id" class="form-control" id="">
+            //- </div>
+            div(class="sign-up-sub-div")
+                <div class="form-group">
+                    <label for="">Email</label>
+                    <input type="email" name="Email" class="form-control" id="" required>
+                </div>
+                <div class="form-group">
+                    <label for="">Mobile No.</label>
+                    <input type="number" name="Mobile" class="form-control" id="" required>
+                </div>
+                div(class="next-back-btn-container")
+                    button(class="back-signup-btn" onclick="show_back()" class="btn btn-primary") Back
+                    button(class="next-signup-btn" onclick="show_next()" class="btn btn-primary") Next
+            //- <div class="form-group">
+            //-     <label for="">Profile Picture</label>
+            //-     <input type="file" name="Image" class="form-control" id="">
+            //- </div>
+            div(class="sign-up-sub-div")
+                <div class="form-group">
+                    <label for="">DOB</label>
+                    <input type="date" name="DOB" class="form-control" id="" required>
+                </div>
+                div(class="next-back-btn-container")
+                    button(class="back-signup-btn" onclick="show_back()" class="btn btn-primary") Back
+                    button(class="next-signup-btn" onclick="show_next()" class="btn btn-primary") Next
+            div(class="sign-up-sub-div")
+                <div class="form-group">
+                    <label for="">Location</label>
+                    //- <input type="text" name="Location" class="form-control" placeholder="Enter Location" id="" required>
+                    <input type="text" name="country" class="form-control" placeholder="Enter Country" id="" required>
+                    <input type="text" name="state" class="form-control" placeholder="Enter State" id="" required>
+                    <input type="text" name="district" class="form-control" placeholder="Enter District" id="">
+                    <input type="text" name="town" class="form-control" placeholder="Enter Town-street" id="" required>
+                    <input type="text" name="house_no" class="form-control" placeholder="Enter House No." id="" required>
+                    <input type="number" name="pin_no" class="form-control" placeholder="Enter Pin No" id="" required>
+
+                    p Please Fill Absolute Address...
+
+                </div>
+                div(class="next-back-btn-container")
+                    button(class="back-signup-btn" onclick="show_back()" class="btn btn-primary") Back
+                    button(class="next-signup-btn" onclick="show_next()" class="btn btn-primary") Next
+            div(class="sign-up-sub-div")
+                <div class="form-group">
+                    <label for="">Password</label>
+                    <input type="password" name="Password" class="form-control" id="" required>
+                </div>
+                <div class="form-group">
+                    <label for="">Confirm Password</label>
+                    <input type="password" name="Confirm_Password" class="form-control" id="" required>
+                </div>
+                div(class="next-back-btn-container")
+                    button(class="back-signup-btn" onclick="show_back()" class="btn btn-primary") Back
+                    //- button(type="submit" class="next-signup-btn" class="btn btn-primary") Next
+                <button type="submit" class="btn btn-primary" style="margin: 10px auto">Submit</button>
+        </form>
+        <div class="container" id="login">
+            <h5>If already hav an account</h5>
+            <a href="/login"><h5>Login</h5></a>
+            <h5>with existing account</h5>
+        </div>
