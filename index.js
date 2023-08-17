@@ -21,6 +21,6 @@ app.use('', require('./routes/filterProductRoute'))
 
 
 const port = process.env.PORT;
-app.listen(port, () => {
+app.listen(port,'0.0.0.0', () => {
     console.log(`Server is started at http://localhost:${port}`);
 });

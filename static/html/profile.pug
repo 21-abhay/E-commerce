@@ -50,20 +50,20 @@ block contents
                 tr 
                     th Id 
                     th Name 
-                    th Category 
+                    th(class="respoonssive_hide") Category 
                     th Price 
                     th Quantity
-                    th Views 
-                    th Sell 
+                    th(class="respoonssive_hide") Views 
+                    th(class="respoonssive_hide") Sell 
                 for item in items
                     tr 
                         td #{item.book_id}
                         td #{item.book_name}
-                        td #{item.category}
+                        td(class="respoonssive_hide") #{item.category}
                         td #{item.price}
                         td #{item.quantity}
-                        td #{item.views}
-                        td #{item.sell}
+                        td(class="respoonssive_hide") #{item.views}
+                        td(class="respoonssive_hide") #{item.sell}
 
         div(class="container-fluide" id="insert-items-container")
             <form action="/insert/items" method="post" enctype="multipart/form-data">
@@ -209,19 +209,19 @@ block contents
 
                         table 
                             tr 
-                                th Order Id 
+                                th(class="respoonssive_hide") Order Id 
                                 th Order Date  
                                 th Name
                                 th Price 
-                                th Quantity
+                                th(class="respoonssive_hide") Quantity
                                 th Reciept
                             for order in orders
                                 tr 
-                                    td #{order.order_id}
+                                    td(class="respoonssive_hide") #{order.order_id}
                                     td #{order.order_date}
                                     td #{order.book_name}
                                     td #{order.price}
-                                    td #{order.quantity}
+                                    td(class="respoonssive_hide") #{order.quantity}
                                     td 
                                         a(href=`/view/order/${order.order_id}`) view
                     

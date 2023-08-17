@@ -143,6 +143,11 @@ button:hover{
 button:active{
     background-color: rgb(236, 230, 230);
 }
+@media screen and (max-width: 410px){
+    .respoonssive_hide{
+        display: none;
+    }
+}
 
 @media screen and (max-width: 575px) {
     th,td{
