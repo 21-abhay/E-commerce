@@ -7,9 +7,63 @@ block stylesheet
 
 block header 
 
-block contents
-    div(class="container-fluide")
-        div(class="row")
+block contents 
+
+    div(class="row" style="margin:10px auto;" id="filter-row")
+    
+        div(class="col-sm-3" id="filter")
+            form(action="/filter-product" method="post") 
+                <div class="form-group">
+                    <label for="price">Price</label>
+                    select(name="price")
+                        option(value="all") No Filter
+                        option(value="500") 
+                            a(href="/product-filter/below-500") below 500  
+                        option(value="800") 
+                            a(href="/product-filter/500-800") 500 - 800
+                        option(value="500") 
+                            a(href="/product-filter/above-800") above 800 
+                </div>
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    select(name="category")
+                        option(value="all") No Filter 
+                        for category in categories
+                            option(value=`${category.category}`) #{category.category}
+
+                </div>
+                
+                <div class="form-group">
+                    <label for="class">Class</label>
+                    select(name="class")
+                        option(value="all") No Filter
+                        for i in classes 
+                            option(value=`${i}`) #{i}
+                </div>
+                button(type="submit") Filter
+
+        div(class="col-sm-9" id="best-sell-conatiner")
+
+            for product in products 
+                div(class='container-fluide my-3' style="border-bottom: 2px solid black;")
+                    h1(class="mx-3 my-2" style="border-bottom: 2px solid black;width: fit-content;") #{product.category}
+                    div(id='best-sell')
+                        
+                        //- product.books = JSON.parse(product.books)
+
+                        
+                        for book in product.books 
+                            div(class="best-sell-items")
+                                a(href=`/product/${book.book_id}`) 
+
+                                        img(src=`/static/upload/product/${book.image}`, alt=`${book.book_name}`)
+                                        
+                                        div(class="about-items")
+                                            p #{book.book_name} 
+                                            p &#8377; #{book.price}
+                                            p Rating : #{book.rating}
+
+
             
 
 

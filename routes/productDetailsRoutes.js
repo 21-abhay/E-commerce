@@ -10,10 +10,14 @@ app.use(require('../middleware/sessionHandler'));
 
 
 
-const viewProducts = require('../controllers/productDetailsController')
+const viewProductDetails = require('../controllers/productDetailsController')
+
+const viewProducts = require('../controllers/product');
+
+app.get('/:productId',viewProductDetails);
 
 
-app.get('/:productId',viewProducts);
+app.get('/',viewProducts);
 
 
 

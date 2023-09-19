@@ -12,7 +12,7 @@ app.use(express.json());
 app.use('', require('./routes/homeRoute'));
 app.use('', require('./routes/registrationRoutes'))
 app.use('/profile', require('./routes/profileRoute'))
-app.use('/product', require('./routes/productRoutes'))
+app.use('/product', require('./routes/productDetailsRoutes'))
 app.use('/order', require('./routes/orederItemsRoutes'))
 app.use('/view/order', require('./routes/viewOrederItemsRoutes'))
 app.use('/insert', require('./routes/insertionRoutes'))
