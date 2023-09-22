@@ -15,8 +15,11 @@ const logout = (req, res) => {
             return;
         }
     })
+    const prevURL = req.session.prevURL;
     req.session.destroy();
-    res.redirect('/');
+    // req.session.prevURL = prevURL;
+    // console.log("About : ",prevURL);
+    res.redirect(prevURL);
 };
 
 module.exports = logout;

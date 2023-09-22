@@ -1,0 +1,76 @@
+
+extends ../template.pug 
+
+block stylesheet 
+    style 
+        include ../css/home.css 
+
+block JavaScript 
+
+block header 
+
+
+block contents 
+
+    div(class="row" style="margin:10px auto;" id="filter-row")
+    
+        div(class="col-sm-3" id="filter")
+            form(action="/filter-product" method="post") 
+                <div class="form-group">
+                    <label for="price">Price</label>
+                    select(name="price" class="filter-out" onClick= 'showfilterbtn')
+                        option(value=`${condition.price}`) #{condition.price}
+                        option(value="all") No filter
+                        option(value="500>") 
+                            a(href="/product-filter/below-500") below 500  
+                        option(value="500-800") 
+                            a(href="/product-filter/500-800") 500 - 800
+                        option(value="800<") 
+                            a(href="/product-filter/above-800") above 800 
+                </div>
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    select(name="category" onClick= 'showfilterbtn')
+                        option(value=`${condition.category}`) #{condition.category}
+                        option(value="all") No Filter 
+                        for category in categories
+                            option(value=`${category.category}`) #{category.category}
+
+                </div>
+                
+                //- <div class="form-group">
+                //-     <label for="classes">Class</label>
+                //-     select(name="classes" onClick= 'showfilterbtn')
+                //-         option(value=`${condition.class}`) #{condition.class}
+                //-         option(value="all") No Filter
+                //-         for i in classes 
+                //-             option(value=`${i}`) #{i}
+                //- </div>
+                button(type="submit" id="filterbtn") Filter
+
+        div(class="col-sm-9" id="best-sell-conatiner")
+            <div id="best-sell" class="">
+                 
+                for product in products 
+                   div(class="best-sell-items")
+                        a(href=`/product/${product.book_id}`) 
+
+                            img(src=`/static/upload/product/${product.image}`, alt=`${product.book_name}`)
+                            //- if product.Image 
+                            //-     img(src=`data:image/png;base64,${product.Image.toString('base64')}`, alt=`${product.Name} image`)
+                            //- else 
+                            //-     p img not available 
+                            
+                            div(class="about-items")
+                                p #{product.book_name} 
+                                p &#8377; #{product.price}
+                                p Rating : #{product.rating} 
+                            a(href=`/addtocart/${product.book_id}` class="mx-2 my-1") 
+                                button(class="btn btn-primary") Add To cart
+                            
+            </div>
+
+
+block JavaScript
+    script(src="../static/js/filter.js") 
+

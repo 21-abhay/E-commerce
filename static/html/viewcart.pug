@@ -1,0 +1,40 @@
+
+extends ../template.pug 
+
+block stylesheet 
+    style 
+        include ../css/viewcart.css 
+
+block JavaScript 
+
+block header 
+
+
+block contents 
+    div(class="container")
+        h4 Product in Your Cart
+        //- div(class='row cart')
+        //-     div(class='col-sm-6' id="cart-img")
+        //-         img(src=`/static/images/profile.png`, alt=`Name`)
+        //-     div(class='col-sm-6' id="cart-detail")
+        //-         h5 product
+        //-         h5 343
+        for product in products
+            div(class='container cart')
+                a(href=`/removefromcart/${product.book_id}`) 
+                    button(class="btn btn-danger") Remove
+                a(href=`/order/${product.book_id}`) 
+                    button(class="btn btn-primary") Buy
+                div(class='row ')
+                    div(class='col-sm-6' id="cart-img")
+                        a(href=`/product/${product.book_id}`) 
+                            img(src=`/static/upload/product/${product.image}`, alt=`${product.book_name}`, srcset="")
+                    div(class='col-sm-6' id="cart-detail")
+                        a(href=`/product/${product.book_id}`) 
+                            h5 #{product.book_name} 
+                        h5 &#8377; #{product.price}
+                        h5 #{product.author}
+                        h5 #{product.publisher}
+        
+        a(href=`/buy-all-items`) 
+            button(class="btn btn-primary") Buy All

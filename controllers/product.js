@@ -29,7 +29,7 @@ const productController = async(req, res) => {
         category = types;
     });
 
-    const query = `SELECT b.category, GROUP_CONCAT(JSON_OBJECT('book_id', b.book_id,'book_name', b.book_name,'category', b.category,'price', b.price,'rating', (SELECT r.rating FROM review r WHERE r.book_id = b.book_id))SEPARATOR ',') as books FROM book b GROUP BY b.category`;
+    const query = `SELECT b.category, GROUP_CONCAT(JSON_OBJECT('book_id', b.book_id,'book_name', b.book_name,'category', b.category,'price', b.price,'rating', (SELECT r.rating FROM review r WHERE r.book_id = b.book_id))SEPARATOR ',') as books FROM book b WHERE b.permission='Yes'  GROUP BY b.category`;
 
     await con.query(query,(err,results)=>{
         if(err){
@@ -49,11 +49,11 @@ const productController = async(req, res) => {
         }
         console.log("Products  : ",products[0].books[0])
 
+        req.session.prevURL = req.originalUrl;
         let data = { title: 'Products', profile: user, products: products, categories:category,classes:[] };
         res.status(200).render('product', data);
     });
-
-
+    
 }
 
 module.exports = productController;

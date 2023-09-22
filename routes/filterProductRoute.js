@@ -9,8 +9,9 @@ app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, '../static/html'));
 app.use(require('../middleware/sessionHandler'));
 
-const filterProduct = require('../controllers/filterProductController')
+const {postFilterProduct,filterProduct} = require('../controllers/filterProductController')
 
-app.post('/filter-product', filterProduct);
+app.post('/filter-product', postFilterProduct);
+app.get('/filter-product', filterProduct);
 
 module.exports = app;

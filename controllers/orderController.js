@@ -14,6 +14,7 @@ const orderItem = (req, res) => {
             return;
         }
         let data = { item: result[0] }
+        req.session.prevURL = req.originalUrl;
         res.status(200).render('order', data);
     });
 };
@@ -22,6 +23,7 @@ const orderItemPost = (req, res) => {
     const itemid = req.params.itemid;
     let cmd = `INSERT INTO order_details(order_id, user_id, item_id, quantity, order_date, status) VALUES('${uuid.v4().toString()}', '${req.session.user}', '${itemid}', ${req.body.quantity}, '${new Date()}', 'Confirm')`;
     con.query(cmd, (err, result) => {
+        req.session.prevURL = req.originalUrl;
         if(err){
             res.status(400).send("Order Failed....");
             return;

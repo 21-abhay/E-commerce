@@ -18,6 +18,8 @@ app.use('/view/order', require('./routes/viewOrederItemsRoutes'))
 app.use('/insert', require('./routes/insertionRoutes'))
 app.use('/update', require('./routes/updatationRoutes'))
 app.use('', require('./routes/filterProductRoute'))
+app.use('/addtocart', require('./routes/addtocart'))
+app.use('/viewcart', require('./routes/viewcartRoute'))
 
 
 const port = process.env.PORT;

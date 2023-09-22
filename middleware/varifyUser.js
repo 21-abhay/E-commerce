@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-app.use(require('../middleware/sessionHandler'));
+app.use(require('./sessionHandler'));
 
 const varifyUser = (req,res,next)=>{
     if(req.session.user){

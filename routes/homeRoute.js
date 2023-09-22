@@ -12,9 +12,11 @@ app.use(require('../middleware/sessionHandler'));
 
 const about = require('../controllers/about')
 const product = require('../controllers/product')
-const home = require('../controllers/home')
+const home = require('../controllers/home');
+const sendEmail = require('../config/sendEmail');
 
 app.get(['/','/home'], home);
+app.get('/email', sendEmail);
 app.get('/about', about);
 app.get('/products', product);
 

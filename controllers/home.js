@@ -15,7 +15,7 @@ const homeController = async(req, res) => {
         category = types;
     });
 
-    await con.query('SELECT * FROM book', (err, books) =>{
+    await con.query(`SELECT * FROM book WHERE permission='Yes'`, (err, books) =>{
         if (err) {
             console.error('Error fetching data from the database:', err);
             return;
@@ -26,6 +26,7 @@ const homeController = async(req, res) => {
         }
         products = books;
     });
+    req.session.prevURL = req.originalUrl;
 
     cmd = `SELECT * FROM users WHERE user_id='${req.session.user}'`;
     await con.query(cmd, async(err, user) => {
@@ -39,6 +40,7 @@ const homeController = async(req, res) => {
         }
         else{
             let data = { title: 'home', products: products, profile: {} , categories:category, classes:classes};
+            req.session.prevURL = req.originalUrl;
             res.render('home', data);
         }
     });

@@ -38,7 +38,6 @@ const loginPost = (req, res) => {
                 return;
             }
             req.session.user = result[0].user_id;
-            // req.session.password = result[count].password;
             let login_time = new Date();
             let plateform = req.headers['user-agent'];
             let ip = req.ip;
@@ -49,7 +48,7 @@ const loginPost = (req, res) => {
             });
             req.session.save(function (err) {
                 if (err) return next(err)
-                res.redirect('/')
+                res.redirect(req.session.prevURL);
             });
         });
     });

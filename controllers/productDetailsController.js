@@ -6,6 +6,7 @@ const con = require('../config/mysqlDB');
 const productDetails = (req, res) => {
     const productid = req.params.productId;
     let cmd = `SELECT *, b.book_id FROM book b LEFT JOIN review r ON b.book_id=r.book_id WHERE b.book_id='${productid}'`;
+    req.session.prevURL = req.originalUrl;
     con.query(cmd, (err, results) => {
         if (err) {
             throw err;

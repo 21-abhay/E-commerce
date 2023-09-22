@@ -1,0 +1,18 @@
+
+.cart{
+    border: 2px solid black;
+    margin: 5px;
+}
+
+#cart-img{
+    width: 200px;
+    margin: 2px auto;
+}
+
+#cart-img img{
+    margin: 2px auto;
+    min-width: 100px;
+    max-width: 150px;
+    width: fit-content;
+    object-fit:scale-down;
+}
