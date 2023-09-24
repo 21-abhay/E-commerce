@@ -21,10 +21,10 @@ const viewcart = (req,res)=>{
             let name = 'product-' + books[i].book_id + '.jpeg';
             books[i].image = name;
         }
-        console.log("Books :  ",books)
-        let data = { title: 'Cart', products: books, profile: profile };
-        console.log("View Cart.......")
-        // res.send("View Cart...")
+        let key;
+        books.length ? key='Product in Your Cart' : key='Nothing'
+        let data = { title: 'Cart',key:key, products: books, profile: profile };
+        req.session.prevURL = req.originalUrl;
         res.status(200).render('viewcart',data);
     })
 

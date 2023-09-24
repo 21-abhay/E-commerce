@@ -11,14 +11,13 @@ block header
 
 
 block contents 
-    div(class="container")
-        h4 Product in Your Cart
-        //- div(class='row cart')
-        //-     div(class='col-sm-6' id="cart-img")
-        //-         img(src=`/static/images/profile.png`, alt=`Name`)
-        //-     div(class='col-sm-6' id="cart-detail")
-        //-         h5 product
-        //-         h5 343
+
+    div(class='container my-3')
+        center 
+            h3(id='key') #{key}
+    div(class="container" id='view-cart-container')
+        a(href=`/order/cart/allbooks`) 
+            button(class="btn btn-primary my-2 mx-3") Buy All
         for product in products
             div(class='container cart')
                 a(href=`/removefromcart/${product.book_id}`) 
@@ -36,5 +35,10 @@ block contents
                         h5 #{product.author}
                         h5 #{product.publisher}
         
-        a(href=`/buy-all-items`) 
-            button(class="btn btn-primary") Buy All
+        a(href=`/order/cart/allbooks`) 
+            button(class="btn btn-primary my-2 mx-3") Buy All
+
+
+
+block JavaScript
+    script(src="../static/js/viewcart.js") 

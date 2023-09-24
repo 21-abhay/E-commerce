@@ -3,6 +3,7 @@ const con = require('../config/mysqlDB');
 
 
 const homeController = async(req, res) => {
+    req.session.prevURL = req.originalUrl;
     let category;
     let classes = [1,2,3,4,5,6,7,8,9,10,11,12];
     let profile;
@@ -26,7 +27,7 @@ const homeController = async(req, res) => {
         }
         products = books;
     });
-    req.session.prevURL = req.originalUrl;
+    
 
     cmd = `SELECT * FROM users WHERE user_id='${req.session.user}'`;
     await con.query(cmd, async(err, user) => {

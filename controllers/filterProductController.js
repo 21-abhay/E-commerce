@@ -8,27 +8,22 @@ const postFilterProduct = async(req,res)=>{
     price ? url+='&price='+price : '';
     classes ? url+='&classes='+classes : '';
 
-    console.log("POST URL : ",url);
-
     res.redirect(url);
 }
 
 
 const filterProduct = async(req,res)=>{
-    // console.log("Filter : ",req.session.prevURL)
     let categories;
     let classess = [];
     let profile = {};
     let products;
     // let { category , price , classes} = req.body;
-    console.log('GET URL : ',req.originalUrl);
     let filter = req.originalUrl.replace(['%20'],' ').replace('%3E','>').replace('%3C','<').split('?')[1].split('&');
     category = filter[0].split('=')[1];
     price = filter[1].split('=')[1];
-    console.log("array of category : ",filter)
     let arr={category : category,price : price};
     let condition='';
-    category!="all" || price != "all" ? condition = ' AND ': console.log("Price : ",price);
+    category!="all" || price != "all" ? condition = ' AND ': '';
     category!="all"  ? condition += `category = '${category}'` :"";
     category!="all"  & price!="all"  ? condition += ` AND ` : "";
     price =='500>' ? condition += ` price < 500` : price =='500-800' ? condition = condition + `price >= 500 AND price <= 800` : price =='800<' ? condition = condition + `price > 800` :"";
@@ -49,8 +44,6 @@ const filterProduct = async(req,res)=>{
             profile = user[0];
         })
     }
-
-    console.log("Condition : ",condition)
     con.query(`SELECT * FROM book WHERE permission='Yes' ${condition}`, (err, books) =>{
         if (err) {
             console.error('Error fetching data from the database:', err);
@@ -64,7 +57,6 @@ const filterProduct = async(req,res)=>{
         let data = { title: 'filter', products: products, profile: profile , categories:categories, classes:classess, condition:arr};
         
         req.session.prevURL = req.originalUrl;
-        console.log("Prev URL : ",req.session.prevURL)
         res.status(200).render('filter', data);
     });
     

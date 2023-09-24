@@ -48,6 +48,7 @@ const loginPost = (req, res) => {
             });
             req.session.save(function (err) {
                 if (err) return next(err)
+                req.session.prevURL = req.session.prevURL || '/'
                 res.redirect(req.session.prevURL);
             });
         });

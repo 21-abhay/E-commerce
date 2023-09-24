@@ -20,6 +20,7 @@ app.use('/update', require('./routes/updatationRoutes'))
 app.use('', require('./routes/filterProductRoute'))
 app.use('/addtocart', require('./routes/addtocart'))
 app.use('/viewcart', require('./routes/viewcartRoute'))
+app.use('/removefromcart', require('./routes/removefromcartRoutes'))
 
 
 const port = process.env.PORT;

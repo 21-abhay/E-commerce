@@ -17,9 +17,7 @@ const updateDetailsGet = (req, res) => {
 }
 
 const updateDetailsPost = (req, res) => {
-    console.log(req.body)
     let date = req.body.dob;
-    console.log(date)
     res.send("complete..")
 }
 

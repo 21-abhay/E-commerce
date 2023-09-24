@@ -25,15 +25,12 @@ const signupPost = async(req, res) => {
     }
     info = req.body;
     hash = await hashPassword(info.Password);
-    console.log("Password : ",info.Password);
-    console.log("Hash Password : ",hash);
 
     con.query(`SELECT * FROM users WHERE email='${info.Email}'`, (err,output)=>{
         if(err){
             res.send(err);
             return;
         }
-        console.log("Existing User : ",output);
         if(output.length){
             let data = { title: "Signup", message: "Already Registered with this email..", profile: {} };
             res.status(200).render('signup', data);

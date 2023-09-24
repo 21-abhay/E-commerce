@@ -8,7 +8,7 @@
     title= title
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-    //- <link rel="stylesheet" href="/css/template.css">
+    
     link(rel="stylesheet", href="/static/css/order.css")
     <link rel="stylesheet" href="/static/css/template.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
@@ -22,34 +22,67 @@
 
 <body>
 
-    div(class="container")
+    center <h1 id='buy-type'>#{quantity}<h2>
+
+    div(class="container" id='single-item')
 
         form(action=`/order/book/${item.book_id}`  method="post")
             <div class="form-group">
                 label(for="") Name : #{item.book_name}  
-                //- <input type="number" name="quantity" class="form-control" id="">
             </div>
             <div class="form-group">
                 label(for="") Author : #{item.author}  
-                //- <input type="number" name="quantity" class="form-control" id="">
             </div>
             <div class="form-group">
                 label(for="") Price : &#8377; #{item.price}  
-                //- <input type="number" name="quantity" class="form-control" id="">
             </div>
             <div class="form-group">
                 label(for="") Rating : #{item.rating}  
-                //- <input type="number" name="quantity" class="form-control" id="">
             </div>
             <div class="form-group">
                 label(for="") Category : #{item.category}  
-                //- <input type="number" name="quantity" class="form-control" id="">
             </div>
             <div class="form-group">
                 <label for="">Quantity : </label>
                 <input type="number" name="quantity" class="form-control" value=1 placeholder="Enter Quantity.." id="">
             </div>
             <button type="submit" class="btn btn-primary">Buy</button>
+
+
+
+    div(class="container" id='multiple-item')
+
+        form(action="/order/cart/allbooks", method="post") 
+            table 
+                tr 
+                    th(style='display:none') Id
+                    th Name 
+                    th price
+                    th qnt 
+                    th Total price
+                for item in items 
+                    tr 
+                        td(style='display:none')
+                            //- label(for="id") #{item.book_id}
+                            input(type="text" name="book_id" value=`${item.book_id}`)
+                        td 
+                            label(for="name") #{item.book_name}
+                            //- <input type="text" name="book_name" class="form-control" id="">
+                        td 
+                            label(for="price" data-custom=`${item.price}` class='price' id=`${item.book_id}`) &#8377; #{item.price}
+                        td 
+                            <input data-custom=`#{item.book_id}` type="number" name="book_quantity" value=1 onchange='onchangehandler(this)' class="form-control quantity-many" id="">
+                        td 
+                            label(for="EachTotalprice" data-custom=`${item.price}` class='total-price' id=`total-${item.book_id}`) &#8377; #{item.price}
+                
+            h3 
+                label(for="total" ) Total : &#8377; <span id='total'></span>
+
+            <button type="submit" class="btn btn-primary">Buy</button>
+
+
+
+
 
     <footer>
         <div class="footer-row">
@@ -69,6 +102,6 @@
 
 block JavaScript
 
-script(src="/static/js/template.js")
+    script(src="/static/js/order.js")
 
 </html>

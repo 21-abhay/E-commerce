@@ -15,3 +15,13 @@ form{
 form label{
     font-weight: bold;
 }
+
+.quantity-many{
+    width: 100px;
+}
+
+th, td {
+    padding: 8px; /* Add padding to create space between content and cell borders */
+    text-align: left;
+    border: 1px solid black;
+}

@@ -8,12 +8,16 @@ app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, '../static/html'));
 app.use(require('../middleware/sessionHandler'));
 
-const {orderItem, orderItemPost} = require('../controllers/orderController');
+const {orderItem, orderItemPost,orderAllitemsGet,orderAllitemsPost} = require('../controllers/orderController');
 const varifyUser = require('../middleware/varifyUser');
 
 app.get('/:itemid',varifyUser, orderItem);
 
+app.get('/cart/allbooks',varifyUser, orderAllitemsGet);
+
 app.post('/book/:itemid',varifyUser, orderItemPost);
+
+app.post('/cart/allbooks',varifyUser, orderAllitemsPost);
 
 
 

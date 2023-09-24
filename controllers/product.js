@@ -4,7 +4,6 @@ const con = require('../config/mysqlDB');
 
 
 const productController = async(req, res) => {
-    // console.log("URL : ",req.originalUrl)
     let products = [];
     let user = {};
     let category;
@@ -15,7 +14,6 @@ const productController = async(req, res) => {
         let cmd = `SELECT * FROM users WHERE user_id='${req.session.user}'`;
         await con.query(cmd, (err, result) => {
             if (err) throw err;
-            // console.log(result[0]);
             user = result[0];
             return;
         });
@@ -33,7 +31,6 @@ const productController = async(req, res) => {
 
     await con.query(query,(err,results)=>{
         if(err){
-            console.log(err);
             res.status(500).json({err});
             return;
         }
@@ -47,7 +44,6 @@ const productController = async(req, res) => {
                 products[i].books[j].image = name;
             }
         }
-        console.log("Products  : ",products[0].books[0])
 
         req.session.prevURL = req.originalUrl;
         let data = { title: 'Products', profile: user, products: products, categories:category,classes:[] };
