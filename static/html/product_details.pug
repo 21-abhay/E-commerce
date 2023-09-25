@@ -15,8 +15,11 @@ block contents
                 img(src=`/static/upload/product/${product.image}`, alt=`${product.Name}`)
 
             div(class="col-sm-6" class="details-container")
-                a(href=`/order/${product.book_id}`) 
-                    button(type="button" class="btn btn-success" id="place-order") Place Order
+                div
+                    a(href=`/addtocart/${product.book_id}` class="mx-2 my-1") 
+                        button(class="btn btn-primary") Add To cart
+                    a(href=`/order/${product.book_id}`) 
+                        button(type="button" class="btn btn-success" id="place-order") Place Order
                 
                 div(class="details")
                     //- h2 Id : #{product.book_id}
@@ -28,9 +31,10 @@ block contents
                     h4 Quantity Avalaible : #{product.quantity}
                     //- h4 #{product.Upload_by} 
                     
-                a(href=`/order/${product.book_id}`) 
-                    button(type="button" class="btn btn-success" id="place-order") Place Order
-
+                div
+                    a(href=`/order/${product.book_id}`) 
+                        button(type="button" class="btn btn-success" id="place-order") Place Order
+                
 
 
 

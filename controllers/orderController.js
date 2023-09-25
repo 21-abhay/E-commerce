@@ -40,19 +40,26 @@ const orderAllitemsGet = (req,res)=>{
         if(err){
             res.status(500).send('<h1>Internal Server Error</h1>');
         }
-        for (let i = 0; i < books.length; i++) {
-            books[i]= books[i].book_id
-        }
-        cmd = `SELECT * FROM book WHERE book_id IN (?)`
-        con.query(cmd,[books], (err,results)=>{
-            if(err){
-                res.status(500).send('<h1>Internal Server Error</h1>');
+        if(books.length){
+            for (let i = 0; i < books.length; i++) {
+                books[i]= books[i].book_id
             }
-            let data = {quantity:'multiple', item: results[0], items:results }
-            req.session.prevURL = req.originalUrl;
-            res.status(200).render('order', data);
+            cmd = `SELECT * FROM book WHERE book_id IN (?)`
+            con.query(cmd,[books], (err,results)=>{
+                if(err){
+                    res.status(500).send('<h1>Internal Server Error</h1>');
+                }
+                let a='';
+                results.length>1 ? a='multiple' : a='one';
+                let data = {quantity:a, item: results[0], items:results }
+                req.session.prevURL = req.originalUrl;
+                res.status(200).render('order', data);
 
-        });
+            });
+        }
+        else{
+            res.status(200).send('<h1>Please add Books to cart or select any book to buy</h1>')
+        }
     });
 }
 

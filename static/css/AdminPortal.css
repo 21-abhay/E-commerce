@@ -1,0 +1,19 @@
+
+#btn-list{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+#listed{
+    
+}
+
+#unlisted{
+    display: none;
+}
+
+th,td{
+    padding: 5px;
+    border: 2px solid black;
+}

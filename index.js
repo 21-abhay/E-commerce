@@ -9,6 +9,7 @@ app.use(express.json());
 
 
 
+app.use('/admin', require('./routes/adminRoutes'));
 app.use('', require('./routes/homeRoute'));
 app.use('', require('./routes/registrationRoutes'))
 app.use('/profile', require('./routes/profileRoute'))

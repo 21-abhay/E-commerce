@@ -1,0 +1,28 @@
+
+extends ../template.pug 
+
+block stylesheet 
+    style 
+        include ../css/about.css 
+
+block JavaScript 
+    script(src="/static/js/about.js") 
+
+block header 
+
+
+block contents 
+    h1 Abhayjeet
+    h2 Administration
+    div(class="container")
+        form(action="/admin/login/admin" method="post")
+            <div class="form-group">
+                <label for="email">Email address:</label>
+                <input type="email" name="Email" class="form-control" placeholder="Enter email" id="email">
+            </div>
+            <div class="form-group">
+                <label for="pwd">Password:</label>
+                <input type="password" name="Password" class="form-control" placeholder="Enter password" id="pwd">
+            </div>
+            <button type="submit" class="btn btn-primary"> Submit</button>
+

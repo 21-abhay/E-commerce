@@ -1,0 +1,65 @@
+
+
+extends ../template.pug 
+
+block stylesheet 
+    style 
+        include ../css/AdminPortal.css 
+
+block JavaScript 
+    script(src="/static/js/AdminPortal.js") 
+
+block header 
+
+
+block contents 
+    center
+        h1 Admin Portal
+
+    center 
+        a(href="/admin/logout")
+            button(type="button" class='btn btn-danger my-2') Logout Admin
+
+    div(class='container')
+        ul(id='btn-list')
+            li
+                button(type="button" class='btn btn-success mx-2' onclick="showListed()") Listed
+            li
+                button(type="button" class='btn btn-primary mx-2' onclick="showUnlisted()") Un-Listed
+
+    div(class='container' id='listed')
+        h1 Listed
+        table 
+            tr 
+                th Name 
+                th Seller  
+                th Price 
+            
+            for item in listed 
+                tr 
+                    td #{item.book_name}
+                    td #{item.first_name} #{item.last_name}
+                    td #{item.price}
+
+
+    div(class='container' id='unlisted')
+        h1 Un - Listed
+        table 
+            tr 
+                th Name 
+                th Seller 
+                th Role 
+                th Price 
+                th Confirm
+            
+            for item in unlisted 
+                tr 
+                    td #{item.book_name}
+                    td #{item.first_name} #{item.last_name}
+                    td #{item.role}
+                    td #{item.price}
+                    td 
+                        a(href=`/admin/remove/${item.book_id}`) 
+                            button(type="button" class='btn btn-danger') Remove
+                        a(href=`/admin/add/${item.book_id}`) 
+                            button(type="button" class='btn btn-success') Add
