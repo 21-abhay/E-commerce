@@ -21,7 +21,7 @@ const orderItem = (req, res) => {
 
 const orderItemPost = (req, res) => {
     const itemid = req.params.itemid;
-    let cmd = `INSERT INTO order_details(order_id, user_id, item_id, quantity, order_date, status) VALUES('${uuid.v4().toString()}', '${req.session.user}', '${itemid}', ${req.body.quantity}, '${new Date()}', 'Confirm')`;
+    let cmd = `INSERT INTO order_details(order_id, user_id, item_id, order_qnt, order_date, status) VALUES('${uuid.v4().toString()}', '${req.session.user}', '${itemid}', ${req.body.quantity}, '${new Date()}', 'Confirm')`;
     con.query(cmd, (err, result) => {
         req.session.prevURL = req.originalUrl;
         if(err){
@@ -68,7 +68,7 @@ const orderAllitemsGet = (req,res)=>{
 const orderAllitemsPost = (req,res)=>{
     const user = req.session.user;
     const {book_id,book_quantity} = req.body;
-    let cmd = `INSERT INTO order_details(order_id, user_id, item_id, quantity, order_date, status) VALUES`;
+    let cmd = `INSERT INTO order_details(order_id, user_id, item_id, order_qnt, order_date, status) VALUES`;
     for (let i = 0; i < book_id.length; i++) {
         if(i==0){
             cmd += `('${uuid.v4().toString()}', '${user}', '${book_id[i]}', ${book_quantity[i]}, '${new Date()}', 'Confirm')`;
