@@ -3,7 +3,7 @@
 const con = require('../config/mysqlDB');
 const  {hashPassword}  = require('../middleware/bcrypt');
 const nodemailer = require('nodemailer');
-const sendEmail = require('../config/sendEmail');
+// const sendEmail = require('../config/sendEmail');
 
 
 const signupGet = (req, res) => {
@@ -63,9 +63,9 @@ const signupPost = async(req, res) => {
                     return;
                 }
             });
-            const receiverEmail = info.Email; // Replace with the recipient's email address
-            const otp = sendEmail.generateOTP();
-            sendEmail.sendOTP(receiverEmail, otp);
+            // const receiverEmail = info.Email; // Replace with the recipient's email address
+            // const otp = sendEmail.generateOTP();
+            // sendEmail.sendOTP(receiverEmail, otp);
 
             let data = { title: "Login", message: "Now Login with your account", profile: {} };
             res.status(200).render('login', data);
