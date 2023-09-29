@@ -10,7 +10,7 @@ const insertItem = (req, res) => {
     }
     let info = req.body;
     let upload_date = new Date();
-    let cmd = `INSERT INTO book(book_id, book_name, category, author,publisher, price, uploaded_by, quantity,upload_date) VALUES('${id}', '${info.Name}', '${info.Category}', '${info.Author}','${info.Publisher}' ,${info.Price}, '${req.session.user}', ${info.Quantity}, '${upload_date}')`;
+    let cmd = `INSERT INTO book(book_id, book_name, category, author,publisher, price, uploaded_by, quantity,upload_date,permission) VALUES('${id}', '${info.Name}', '${info.Category}', '${info.Author}','${info.Publisher}' ,${info.Price}, '${req.session.user}', ${info.Quantity}, '${upload_date}','No')`;
 
     con.query(cmd, (err, result) => {
         if (err) throw err;
