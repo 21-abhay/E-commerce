@@ -6,16 +6,30 @@ const con = mysql.createConnection({
     user: process.env.database_user,
     port: process.env.database_port,
     password: process.env.database_password,
-    database: process.env.database_database
+    // database: process.env.database_database
 });
 con.connect((err) => {
     if (err) {
         console.error('Error connecting to the database:', err);
         return;
     }
-    else {
-        console.log('Connected to the database!');
-    }
+    // Execute the query to create the new database
+    const createDatabaseQuery = `CREATE DATABASE IF NOT EXISTS ${process.env.database_database}`;
+    con.query(createDatabaseQuery, (err, result) => {
+      if (err) {
+        console.error('Error creating database:', err);
+      } else {
+        console.log('Database created successfully');
+        con.changeUser({ database: `${process.env.database_database}` }, (err) => {
+          if (err) {
+            console.error('Error switching to the new database:', err);
+            return con.end();
+          }
+          createTables();
+        })
+        
+      }
+    });
 });
 
 const createTables = ()=>{
@@ -166,5 +180,5 @@ const createTables = ()=>{
       })
 }
 
-createTables();
+
 module.exports = con;
