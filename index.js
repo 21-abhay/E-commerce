@@ -21,8 +21,8 @@ app.use('/update', require('./routes/updatationRoutes'))
 app.use('', require('./routes/filterProductRoute'))
 app.use('/addtocart', require('./routes/addtocart'))
 app.use('/viewcart', require('./routes/viewcartRoute'))
-app.use('/removefromcart', require('./routes/removefromcartRoutes'))
-
+app.use('/removefromcart', require('./routes/removefromcartRoutes'));
+app.use('/sendmail', require('./routes/sendMail'));
 
 const port = process.env.PORT;
 app.listen(port,'0.0.0.0', () => {

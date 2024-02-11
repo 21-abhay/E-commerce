@@ -1,0 +1,25 @@
+extends ../template.pug 
+
+block stylesheet 
+    style 
+        include ../css/signup.css 
+
+block JavaScript 
+    script(src="/static/js/signup.js") 
+
+block header 
+
+
+block contents 
+
+    //- div(class="alert alert-success" id="signup-message")= message
+
+    div(class='container')
+        form(action="/sendmail" method='post') 
+            input(type="email" placeholder='Enter email-id')
+            <br>
+            //- input(type="text" placeholder='Enter msg')
+            | entet msg
+            <br>
+            textarea(name="msg", cols="30", rows="10" placeholder='Enter msg') 
+

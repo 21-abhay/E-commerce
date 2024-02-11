@@ -12,14 +12,17 @@ const generateOTP = ()=> {
 
 
 // Create a transporter object
-// const transporter = nodemailer.createTransport({
-//     host: 'smtp.ethereal.email',
-//     port: 587,
-//     auth: {
-//         user: 'jeanne11@ethereal.email',
-//         pass: 'ZVxKmvMBpRApGejQu8'
-//     },
-// });
+const transporter = nodemailer.createTransport({
+  service : 'gmail',
+  host: "smtp.forwardemail.net",
+  port: 587,
+  secure: false,
+  auth: {
+    // TODO: replace `user` and `pass` values from <https://forwardemail.net>
+    user: process.env.email,
+    pass: process.env.email_password,
+  },
+});
 
 
 // Send OTP via email
