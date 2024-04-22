@@ -2,7 +2,7 @@
 
 const con = require('../config/mysqlDB');
 const  {hashPassword}  = require('../middleware/bcrypt');
-const nodemailer = require('nodemailer');
+// const nodemailer = require('nodemailer');
 // const sendEmail = require('../config/sendEmail');
 
 
